@@ -1,0 +1,59 @@
+---
+permalink: concepts/concept_virtual_storage_console_overview.html
+sidebar: sidebar
+keywords:
+summary: 'The ONTAP tools for VMware vSphere provides end-to-end life cycle management for virtual machines in VMware environments that use NetApp storage systems. It enables the administrators to manage the storage within the vCenter Server directly and hence simplifies the storage and data management for VMware environments.'
+---
+= ONTAP tools Overview
+:icons: font
+:imagesdir: ../media/
+
+[.lead]
+The ONTAP tools for VMware vSphere provides end-to-end life cycle management for virtual machines in VMware environments that use NetApp storage systems. It enables the administrators to manage the storage within the vCenter Server directly and hence simplifies the storage and data management for VMware environments.
+
+The ONTAP tools integrates with vSphere Client and enables you to use single sign-on (SSO) services. In an environment with multiple vCenter Server instances, each vCenter Server instance that you want to manage must have its own registered instance of ONTAP tools.
+
+Each component in ONTAP tools provides capabilities to help manage your storage more efficiently.
+
+The VMware vSphere Client remote plug-in tool is designed to integrate plug-in functionality into the vSphere Client without the need to run inside vCenter Server. This provides plug-in isolation and enables scale-out of plug-ins that operate in large vSphere environments.
+
+== Virtual Storage Console (VSC)
+
+VSC enables you to perform the following tasks:
+
+* Add storage controllers, assign credentials, and set up permissions for storage controllers of VSC, that both SRA and VASA Provider can leverage
+* Provision datastores
+* Monitor the performance of the datastores and virtual machines in your vCenter Server environment
+* Control administrator access to the vCenter Server objects by using role-based access control (RBAC) at two levels:
+ ** vSphere objects, such as virtual machines and datastores
++
+These objects are managed by using the vCenter Server RBAC.
+
+ ** ONTAP storage
++
+The storage systems are managed by using ONTAP RBAC.
+* View and update the host settings of the ESXi hosts that are connected to NetApp storage
+
+VSC provisioning operations benefit from using the NFS Plug-in for VMware vStorage APIs for Array Integration (VAAI). The NFS Plug-in for VAAI is a software library that integrates the VMware Virtual Disk Libraries that are installed on the ESXi host. The VMware VAAI package enables the offloading of certain tasks from the physical hosts to the storage array. You can perform tasks such as thin provisioning and hardware acceleration at the array level to reduce the workload on the ESXi hosts. The copy offload feature and space reservation feature improve the performance of VSC operations.
+
+The NetApp NFS Plug-in for VAAI is not shipped with VSC. But you can download the plug-in installation package and obtain the instructions for installing the plug-in from the NetApp Support Site.
+
+== VASA Provider
+
+VASA Provider for ONTAP uses VMware vSphere APIs for Storage Awareness (VASA) to send information about storage used by VMware vSphere to the vCenter Server. ONTAP tools has VASA Provider integrated with VSC. VASA Provider enables you to perform the following tasks:
+
+* Provision VMware Virtual Volumes (vVols) datastores
+* Create and use storage capability profiles that define different storage service level objectives (SLOs) for your environment
+* Verify for compliance between the datastores and the storage capability profiles
+* Set alarms to warn you when volumes and aggregates are approaching the threshold limits
+* Monitor the performance of virtual machine disks (VMDKs) and the virtual machines that are created on vVols datastores
+
+== Storage Replication Adapter (SRA)
+
+When SRA is enabled and used in conjunction with VMware Site Recovery Manager (SRM), you can recover the vCenter Server datastores and virtual machines in the event of a failure. SRA enables you to use array based replication (ABR) for protected sites and recovery sites for disaster recovery in the event of a failure.
+
+*Related information*
+
+[ntap-prodlib-oc-api-svcs]
+
+https://mysupport.netapp.com/site/global/dashboard[NetApp Support]
