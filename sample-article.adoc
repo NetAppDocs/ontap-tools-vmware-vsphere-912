@@ -5,7 +5,6 @@ keywords:
 summary: 
 ---
 = Page title goes here
-:toc: macro
 :hardbreaks:
 :toclevels: 1
 :nofooter:
