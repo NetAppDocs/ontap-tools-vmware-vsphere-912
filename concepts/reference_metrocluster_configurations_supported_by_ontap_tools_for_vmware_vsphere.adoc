@@ -28,3 +28,14 @@ When a switchover or switchback occurs, ONTAP tools might take a few minutes to 
 VASA Provider automatically supports environments that use MetroCluster configurations. The switchover is transparent in VASA Provider environments. You cannot add direct SVMs to VASA Provider.
 
 NOTE: VASA Provider does not append the "`-mc`" suffix to the names of the SVMs on the secondary site after a switchover.
+
+== MetroCluster configurations and SRA
+
+The Storage Replication Adapter(SRA) supports environments that use MetroCluster configurations (MCC) with NFS, iSCSI, and FCP protocol.
+
+As a pre-requisite for MCC SRA Configuration, all the storage virtual machine (SVM) names should be unique on the MCC clusters. If the names are not unique, it causes conflicts and the SRA workflows fail.
+
+Required Actions:
+
+. After performing a MCC switchover or a switchback, ensure that the _snapmirror list-destinations_ command on the source cluster shows the proper output with the new SVM name(<vserver_name>-mc). The command could take up to 30 mins to run.
+. Perform discoverDevices operation from the SRM UI before proceeding with other SRA workflows. This operation ensures that the SRM is aware of the changes in the SVM names after a switchover or a switchback.
